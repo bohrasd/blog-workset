@@ -1,0 +1,44 @@
+* 
+  box-sizing border-box
+
+img 
+  max-width 100%
+
+
+@media only screen and (max-width: 768px) 
+  .container 
+    width: 95%;
+    
+
+@media only screen and (min-width: 768px) 
+  .container 
+    width: 60%;
+    
+
+@font-face
+  font-family source-han-serif-sc
+  font-style normal
+  font-weight normal
+  src url('../font/source.eot')
+  src:
+    url('../font/source.eot?#font-spider') format('embedded-opentype'),
+    url('../font/source.woff2') format('woff2'),
+    url('../font/source.woff') format('woff'),
+    url('../font/source.ttf') format('truetype'),
+    url('../font/source.svg') format('svg');
+
+a 
+  word-break break-all
+  transition 0.5s
+
+@import "_partial/header"
+@import "_partial/index"
+@import "_partial/pagination"
+@import "_partial/category"
+@import "_partial/archive"
+@import "_partial/footer"
+@import "_partial/post"
+@import "_partial/about-info"
+@import "_partial/gallery"
+@import "_partial/animation"
+@import "_partial/to-top"

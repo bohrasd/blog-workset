@@ -1,0 +1,3 @@
+title: Tristram
+type: about
+---
