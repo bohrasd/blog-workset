@@ -20,7 +20,7 @@ body
   color: $color-text
   background-color: $color-background
   font-size: $font-size
-  font-family: source-han-serif-sc
+  font-family: $font-family-body
   font-weight: 400
   line-height: $line-height
   text-rendering: geometricPrecision
@@ -84,7 +84,7 @@ body
 
 .width
   width: 100%
-  max-width: 55rem
+  max-width: 50rem
 
 @media (max-width: 480px)
   // smaller margins at smaller screen widths
@@ -113,7 +113,7 @@ body
 // Code
 @import "_highlight/" + highlight
 pre
-  font-family: source-han-serif-sc
+  font-family: $font-family-mono
   font-size: 13px
   padding: 10px 15px
   padding-bottom: 0
@@ -133,7 +133,7 @@ pre code
   padding: 0
 
 .highlight
-  font-family: source-han-serif-sc;
+  font-family: $font-family-mono;
   background: darken($color-background, 80%)
   //color: $color-light
   -webkit-border-radius: 4px
