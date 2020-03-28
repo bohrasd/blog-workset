@@ -38,8 +38,8 @@
     <!-- title -->
     <title><%= page.title ? page.title : config.title %></title>
     <!-- styles -->
-    <!-- <%- css('css/style.css') %> -->
-    <link rel="stylesheet" href="/var/www/myblog/public/css/style.css">
+    <%- css('css/style') %>
+    <!-- <link rel="stylesheet" href="/var/www/myblog/public/css/style.css"> -->
     <!-- rss -->
     <% if (theme.rss === '' && config.feed && config.feed.path) { %>
       <% theme.rss = config.feed.path %>

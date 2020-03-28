@@ -15,10 +15,8 @@ RUN git config --global user.email "bohrasdf@gmail.com" \
     && git config --global user.name "bohrasd"
 EXPOSE 4000
 RUN hexo generate \
-    && font-spider --ignore "font-awesome\.css$,bootstrap\.min\.css$" public/**/*.html
-# RUN hexo generate \
-    # && font-spider --ignore "font-awesome\.css$,bootstrap\.min\.css$" public/**/*.html \
-    # && mv themes/wind/layout/_partial/head.ejs themes/wind/layout/_partial/head.ejs.2 \
-    # && mv themes/wind/layout/_partial/head.ejs.1 themes/wind/layout/_partial/head.ejs \
-    # && hexo generate
+    && font-spider --ignore "font-awesome\.css$,bootstrap\.min\.css$" public/**/*.html \
+    && mv themes/cactus-light/layout/_partial/head.ejs themes/cactus-light/layout/_partial/head.ejs.2 \
+    && mv themes/cactus-light/layout/_partial/head.ejs.1 themes/cactus-light/layout/_partial/head.ejs \
+    && hexo generate
 CMD hexo server
