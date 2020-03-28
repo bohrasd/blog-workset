@@ -1,5 +1,5 @@
 ---
-title: 面向行vs面向列的数据库
+title: 面向行vs面向列的数据库[PDF]
 date: 2019-11-21 14:40:19
 tags:
     - Computer Science
