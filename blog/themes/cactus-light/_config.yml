@@ -1,0 +1,52 @@
+nav:
+  Home: /
+  About: /about/
+  Writing: /archives/
+  Projects: http://github.com/bohrasd
+
+projects_url: http://github.com/bohrasd
+
+customize:
+    gravatar:
+        email: bohrasdf@gmail.com
+    logo:
+        enabled: true
+        width: 50
+        height: 50
+        url: /images/logo.png
+        gravatar: false
+    favicon:
+      # eg. generate with http://realfavicongenerator.net/
+      desktop:
+        url: /images/favicon-192x192.png
+        gravatar: false
+      android:
+        url: /images/favicon-192x192.png
+        gravator: false
+      apple:
+        url: /images/apple-touch-icon.png
+        gravator: false
+    social_links:
+        github: http://github.com/bohrasd
+        twitter: https://twitter.com/leoric_ring
+        facebook: https://www.facebook.com/RapidBobo
+        linkedin: https://www.linkedin.com/in/bohr-%E5%BC%A0%E5%93%B2%E6%BA%90-72604484/
+    show_all_posts: false
+    post_count: 10
+    highlight: monokai
+
+# RSS
+rss: true
+
+# Plugins
+plugins:
+    disqus_shortname: # Disqus Comments Shortname
+    google_analytics: UA-128594966-1 # enter the tracking ID for your Google Analytics
+
+# Miscellaneous
+miscellaneous:
+    open_graph: # see http://ogp.me
+        fb_app_id:
+        fb_admins:
+        twitter_id:
+        google_plus:
