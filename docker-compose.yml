@@ -5,7 +5,5 @@ services:
     image: hexo-bohr:v1
     ports:
       - "4000:4000"
-    volumes:
-      - ./blog:/var/www/myblog
     environment:
       - LANG=C.UTF-8
