@@ -1,7 +1,10 @@
 ---
 title: prometheus operator
 date: 2020-04-20 20:13:08
-tags: kubernetes metrics prometheus
+tags:
+  - kubernetes
+  - metrics
+  - prometheus
 ---
 
 普罗米修斯很早就该上了。阿里云提供的metrics 颇为实用，但是外包给他们做的dashboard着实难用丑陋，缺乏大厂风范。浩哥吐槽了很久。

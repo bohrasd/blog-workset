@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.8"
 services:
   myblog:
     build: .
@@ -7,3 +7,5 @@ services:
       - "4000:4000"
     environment:
       - LANG=C.UTF-8
+    volumes:
+      - ./blog/source:/var/www/myblog/source
