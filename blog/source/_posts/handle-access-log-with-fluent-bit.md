@@ -21,3 +21,14 @@ Fluent bit 里面有几个重要的概念。数据通过 input 读进来时，�
 *中间出过一些小插曲，比如没设置旧日志读取时间，搞得 fluent bit 压力极大不停的 backpressure, 我还在疑惑为何刚才的操作没有被记录等愚蠢状况。*
 
 接下来的操作就很简单了，设置一个符合 istio-proxyv2 格式的正则，写个 parser filter 即可方便的搜索 access log. 其实 fluent bit 内置的正则 parser 里有 envoy 格式，但是 istio 的 proxyv2 修改过这个格式，多一些信息。辛辛苦苦抠的，改天我把这个正则也贴过来。
+
+```
+    [PARSER]
+        Name        k8s-nginx-ingress-typed
+        Format      regex
+        Regex       ^(?<host>[^ ]*) - (?<user>[^ ]*) \[(?<time>[^\]]*)\] "(?<method>\S+)(?: +(?<path>[^\"]*?)(?: +\S*)?)?" (?<code>[^ ]*) (?<size>[^ ]*) "(?<referer>[^\"]*)" "(?<agent>[^\"]*)" (?<request_length>[^ ]*) (?<request_time>[^ ]*) \[(?<proxy_upstream_name>[^ ]*)\] (\[(?<proxy_alternative_upstream_name>[^ ]*)\] )?(?<upstream_addr>[^ ]*) (?<upstream_response_length>[^ ]*) (?<upstream_response_time>[^ ]*) (?<upstream_status>[^ ]*) (?<reg_id>[^ ]*).*$
+        Time_Key    start_time
+        Time_Format %d/%b/%Y:%H:%M:%S %z
+        Types code:integer size:integer request_time:float upstream_status:integer upstream_response_time:float
+```
+

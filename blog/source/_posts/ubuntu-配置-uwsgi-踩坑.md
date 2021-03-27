@@ -2,6 +2,7 @@
 title: ubuntu 配置 uwsgi 踩坑
 date: 2018-08-15 17:41:29
 tags:
+published: false
 ---
 
 [](#uwsgi-配置 "uwsgi 配置")uwsgi 配置
@@ -17,10 +18,10 @@ tags:
     emperor = /etc/uwsgi/vassals
     uid = www-data
     gid = www-data
-    
 
-站点的配置文件主要是要指定 base 下的 app 文件的 module 模块的可执行 callable.  
-sock 文件会在 uwsgi 启动后自动生成。  
+
+站点的配置文件主要是要指定 base 下的 app 文件的 module 模块的可执行 callable.
+sock 文件会在 uwsgi 启动后自动生成。
 配置 sock 文件的权限。nginx 和 uwsgi 的用户同为 www-data ，可以放心配置为 644.
 
 另外，日志和配置的权限都要配置给 www-data.
@@ -28,7 +29,7 @@ sock 文件会在 uwsgi 启动后自动生成。
 坑：由于现在一般采用 pip3 安装最新版的 uwsgi，所以已经无须配置 plugin = python. 否则会报错：
 
     UNABLE to load uWSGI plugin: ./python_plugin.so: cannot open shared object file: No such file or directory !!!
-    
+
 
 [](#uwsgi-服务 "uwsgi 服务")uwsgi 服务
 --------------------------------
@@ -42,7 +43,7 @@ Upstart 的配置在 /etc/init 中，这里不做介绍。过去我常用的 vps
     [Unit]
     Description=uWSGI Emperor
     After=syslog.target
-    
+
     [Service]
     ExecStart=/home/.pyenv/versions/3.7.0/bin/uwsgi --ini /etc/uwsgi/emperor.ini
     RuntimeDirectory=uwsgi
@@ -50,9 +51,9 @@ Upstart 的配置在 /etc/init 中，这里不做介绍。过去我常用的 vps
     KillSignal=SIGQUIT
     Type=notify
     NotifyAccess=all
-    
+
     [Install]
     WantedBy=multi-user.target
-    
+
 
 这里只要正确配置 uwsgi 的目录，用参数方式启动就行。log 可以删掉，只要 uwsgi 配置文件里有 log 就可以。
