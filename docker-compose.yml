@@ -1,11 +1,14 @@
 version: "3.8"
 services:
   myblog:
-    build: .
+    build:
+      context: .
     image: hexo-bohr:v1
     ports:
       - "4000:4000"
     environment:
       - LANG=C.UTF-8
     volumes:
-      - ./blog/source:/var/www/myblog/source
+      - source: ./blog/source
+        target: /var/www/myblog/source
+        type: bind
