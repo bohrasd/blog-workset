@@ -9,6 +9,4 @@ services:
     environment:
       - LANG=C.UTF-8
     volumes:
-      - source: ./blog/source
-        target: /var/www/myblog/source
-        type: bind
+      - ./blog/source:/var/www/myblog/source:Z
