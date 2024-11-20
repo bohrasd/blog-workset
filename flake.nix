@@ -26,18 +26,24 @@
         default = pkgs.mkShell {
           # The Nix packages provided in the environment
           packages = with pkgs; [
-            nodejs_18 # Node.js 18, plus npm, npx, and corepack
-            nodePackages.node2nix
+            nodejs_18
             yarn
             hexo-cli
           ];
           shellHook = ''
             cd blog
             yarn
+            # First generate with relative path
             hexo generate
-            font-spider --ignore "font-awesome\.css$,bootstrap\.min\.css$" public/**/*.html
-            mv themes/cactus-light/layout/_partial/head.ejs themes/cactus-light/layout/_partial/head.ejs.2
-            cp themes/cactus-light/layout/_partial/head.ejs.1 themes/cactus-light/layout/_partial/head.ejs
+            # Replace CSS path to absolute for font-spider
+            ABSOLUTE_PATH=$(pwd)
+            sed -i.bak "s|<%- css('css/style') %>|<%- css('$ABSOLUTE_PATH/public/css/style.css') %>|g" themes/cactus-light/layout/_partial/head.ejs
+            hexo generate
+            # Run font-spider
+            npx font-spider --ignore "font-awesome\.css$,bootstrap\.min\.css$" public/**/*.html
+            # Restore original CSS path
+            mv themes/cactus-light/layout/_partial/head.ejs.bak themes/cactus-light/layout/_partial/head.ejs
+            # Generate final version
             hexo generate
             hexo server
           '';
